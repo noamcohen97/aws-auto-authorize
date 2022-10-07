@@ -1,0 +1,37 @@
+{
+    "name": "AWS Auto Authorize",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions":
+    [
+        "activeTab",
+        "tabs"
+    ],
+    "content_scripts":
+    [
+        {
+            "matches":
+            [
+                "https://*.awsapps.com/start/user-consent/authorize.html?*"
+            ],
+            "js":
+            [
+                "click.js"
+            ]
+        },
+        {
+            "matches":
+            [
+                "https://*.awsapps.com/start/user-consent/login-success.html"
+            ],
+            "js":
+            [
+                "close.js"
+            ]
+        }
+    ],
+    "background":
+    {
+        "service_worker": "background.js"
+    }
+}
